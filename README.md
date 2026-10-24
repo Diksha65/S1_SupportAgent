@@ -1,6 +1,6 @@
 # Enterprise AI Support Platform
 
-A production-grade, multi-agent AI support system built with **LangGraph** and **Gemini 2.5 Flash**. The platform classifies incoming support tickets, routes them to specialized handlers, and — across 12 progressive sessions — gains tool use, memory, security, multi-agent orchestration, and a full audit trail.
+A production-grade, multi-agent AI support system built with **LangGraph** and **Gemini 3.8 Flash**. The platform classifies incoming support tickets, routes them to specialized handlers, and — across 12 progressive sessions — gains tool use, memory, security, multi-agent orchestration, and a full audit trail.
 
 **Current state: Session 1 of 12 — The Blueprint**
 
