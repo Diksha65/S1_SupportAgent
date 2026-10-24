@@ -105,7 +105,7 @@ def classify_node(state: SupportState) -> dict:
     ])
 
     # Layer 1 — normalize
-    raw = response.content.strip().lower().rstrip(".,!?")
+    raw = response.content[0].get('text').strip().lower().rstrip(".,!?")
 
     # Layer 2 — validate
     VALID = {"technical", "billing", "fraud", "general"}
@@ -260,7 +260,7 @@ def build_initial_state(ticket: str) -> dict:
     Provides safe defaults for ALL 17 fields so no node gets a KeyError.
     Called by both the test harness and the Streamlit UI.
     """
-    return {
+    state = {
         "raw_input":          ticket,
         "sanitized_input":    "",
         "category":           "",
@@ -279,6 +279,8 @@ def build_initial_state(ticket: str) -> dict:
         "github_issue_url":   "",
         "final_response":     "",
     }
+    print(f"[State] Initial state built for ticket: '{ticket[:60]}...'")
+    return state
 
 
 # ══════════════════════════════════════════════════════════════════
@@ -293,6 +295,7 @@ def run_ticket(ticket: str) -> dict:
     No config yet — checkpointer added in Session 4.
     """
     initial_state = build_initial_state(ticket)
+    print(f"[Run] Invoking graph for ticket: '{ticket[:60]}...'")
     result = graph.invoke(initial_state)
     return result
 
